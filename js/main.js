@@ -1,5 +1,5 @@
 
-function ajaxRequest (action){
+function ajaxRequestCore (action){
         var thisurl = "";
         if (action === 'action') thisurl = "/LatInSoft/core/async/do.php?module=Module&command=functionname";
 
