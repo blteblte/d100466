@@ -11,6 +11,7 @@ class Site
     }
 
     public static function home_url() {return site_get('home_url');}
+	public static function base_url() {return site_get('base_url');}
     public static function module_url() {return site_get('module_url');}
     public static function view_url() {return site_get('view_url');}
     public static function js_url() {return site_get('js_url');}

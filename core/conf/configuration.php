@@ -6,10 +6,11 @@
 //$server = '';
 //$root = '.';
 $server = $_SERVER['DOCUMENT_ROOT'];
-$root = '/LatInSoft';
+$root = '/d100466';
 
 return array(
     "home_url"=>"{$server}{$root}/",
+	"base_url"=>"{$root}/",
     "module_url"=>"{$server}{$root}/modules/",
     "view_url"=>"{$server}{$root}/views/",
     "js_url"=>"{$root}/js/",
