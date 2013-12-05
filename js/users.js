@@ -4,7 +4,7 @@ $(document).ready(function() {
 
 function ajaxRequest (action){
         var thisurl = "";
-        if (action === 'getUsers') thisurl = "/LatInSoft/core/async/do.php?module=Users&command=getusers";
+        if (action === 'getUsers') thisurl = __home + "core/async/do.php?module=Users&command=getusers";
 
         $.ajax({
                 dataType: "json",
