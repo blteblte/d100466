@@ -52,6 +52,7 @@
                     <li>Izvēlamies jQuery, kapēc?</li>
                     <li>jQuery UI</li>
                     <li>Izvēlamies AJAX, kapēc?</li>
+                    <li>Select2</li>
                     <ul>
                         <li>Navigācija</li>
                         <li>Pārraidīto datu apjoms</li>
@@ -73,6 +74,7 @@
                     <li>Klases, klašu metodes un statiskās funkcijas</li>
                     <li>Daudzvalodība</li>
                     <li>Lietotāja ievades formas. Ievadīto datu apastrāde (php datu tipu problēma)</li>
+                    <li>Select2</li>
                     <li>Kā praktiski izvairīties no SQL injekcijām un HTML/skriptu injecēšanas WEB lietotnē</li>
                     <li>Dinamisku datu izvade tabulā, to rediģēšana, dzēsšana un jaunu datu pievienošana izmantojot AJAX</li>
                     <li>Autorizēšanās</li>
