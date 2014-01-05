@@ -1,6 +1,6 @@
 <?php
 /*
- *  Framework @LatInSoft -2013-
+ *  Framework @d100466 -2014-
  * 
  *  Controlls ASYNC commands
  */
