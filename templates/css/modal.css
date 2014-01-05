@@ -6,7 +6,7 @@
     overflow: hidden !important;
     border: 1px solid #C0C0C0;
     border-radius: 5px;
-    min-width: 300px;
+    min-width: 400px;
     min-height: 200px;
     background-color: white;
     padding: 10px 10px 10px 10px;
@@ -26,4 +26,17 @@
 .modal-header {
     background-color: #fafafa;
     color: gray;
+}
+
+.form-control{
+    width: auto !important;
+}
+
+.control-group{
+    padding: 5px 5px 5px 5px;
+}
+
+.modal-backdrop{
+    overflow: scroll !important;
+    overflow-x: hidden !important;
 }

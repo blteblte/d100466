@@ -15,6 +15,10 @@ class Module {
     public function db() {return $this->db;}
     public function title() {echo $this->title;}
     
+    public function renderMENU() {
+        include (Site::view_url() . 'default_menu.view.php');
+    }
+    
     public function renderHTML() {
         //ob_start();
         

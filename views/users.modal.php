@@ -10,13 +10,13 @@
     <input id="children_id" type="hidden" value="0" />
     <input id="modal_action" type="hidden" value="create" />
     
-    <div class="row">
-        <span class="pull-left"><label>TAG: </label></span><input id="tag" type="text" class="pull-right">
+    <div class="row control-group">
+        <span class="pull-left"><label>TAG: </label></span><input id="tag" type="text" class="pull-right form-control">
     </div>
-    <div class="row">
-        <span class="pull-left"><label>VALUE: </label></span><input id="value" type="text" class=" pull-right">
+    <div class="row control-group">
+        <span class="pull-left"><label>VALUE: </label></span><input id="value" type="text" class=" pull-right form-control">
     </div>
-    <div class="row">
+    <div class="row control-group">
         <span class="pull-left"><label>TYPE: </label></span><input type="hidden" id="parrent" class="pull-right">
     </div>
     
