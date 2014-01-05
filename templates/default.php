@@ -9,6 +9,7 @@
         <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
         <link href="http://cdnjs.cloudflare.com/ajax/libs/select2/3.4.4/select2.css" rel="stylesheet">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
         <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/select2/3.4.4/select2.min.js"></script>
     </head>
