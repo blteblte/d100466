@@ -25,8 +25,8 @@ if(isset($_GET['module'])){
  else {
      //define default module to be loaded
     $module_url = Site::module_url();
-    include "{$module_url}Module.php";
-    $load = new Module(NULL, NULL, NULL);
+    include "{$module_url}Saturs.php";
+    $load = new Saturs(NULL, NULL, NULL);
  }
 
 include Site::template_url() . 'default.php';

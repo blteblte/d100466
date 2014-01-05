@@ -51,8 +51,8 @@
                     <li>CSS, dizains un "kopā likšana". Dažādu interneta pārlūku problēma</li>
                     <li>Izvēlamies jQuery, kapēc?</li>
                     <li>jQuery UI</li>
-                    <li>Izvēlamies AJAX, kapēc?</li>
                     <li>Select2</li>
+                    <li>Izvēlamies AJAX, kapēc?</li>
                     <ul>
                         <li>Navigācija</li>
                         <li>Pārraidīto datu apjoms</li>

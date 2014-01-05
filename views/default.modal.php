@@ -1,5 +1,5 @@
 
-<div id="user_edit_modal" class="modal fade" style="" role="dialog" aria-labelledby="edit_formLabel" aria-hidden="true" data-backdrop="static">
+<div id="default_modal" class="modal fade" style="" role="dialog" aria-labelledby="edit_formLabel" aria-hidden="true" data-backdrop="static">
 <div class="modal-header">
 	<button type="button" class="close notauto" data-dismiss="modal" aria-hidden="true">×</button>
         <span id="modal_title"><h4>CREATE A NEW CHILD</h4></span>

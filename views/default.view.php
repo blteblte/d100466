@@ -43,6 +43,7 @@
         </div>
     
             <div id="tab2" class="tab-pane fade in">
+                <button class="btn btn-default" onclick="return showModal()">Pievienot spēlētāju</button>
                 <div id="content"></div>
             </div>
         </div>

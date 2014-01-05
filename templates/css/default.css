@@ -1,6 +1,7 @@
 
 body {
     font-family: Verdana;
+    background-color: #fafafa;
 }
 
 .super-global {
@@ -49,6 +50,7 @@ body {
     padding: 20px 20px 20px 20px;
     background-color: #fafafa;
     border-radius: 5px;
+    font-size: 0.9em;
 }
 
 .footer-content {
@@ -71,5 +73,20 @@ body {
 }
 
 .menu-left{
-    padding: 1px 2px 1px 2px !important;
+    padding: 3px 2px 3px 2px !important;
+    border-radius: 4px !important;
+    margin-right: -5px !important;
+}
+
+.menu-left:active{
+    color: #fafafa !important;
+}
+
+.menu-left:hover{
+    text-decoration: underline !important;
+}
+
+.navbar-default{
+    font-family: consolas;
+    font-weight: bold;
 }

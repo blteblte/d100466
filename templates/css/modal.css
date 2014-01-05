@@ -40,3 +40,7 @@
     overflow: scroll !important;
     overflow-x: hidden !important;
 }
+
+#confirmation_dialog{
+    min-height: 130px !important;
+}
