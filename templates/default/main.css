@@ -1,0 +1,177 @@
+/*GLOBAL STYLING*/
+body{
+    font-family: Tahoma, Verdana;
+    font-size: 0.8em;
+    background: url(images/backg.png) repeat;
+}
+
+.input{
+    border-radius: 4px;
+    padding: 4px;
+    margin: 2px;
+}
+
+.btn{
+    padding: 8px;
+    border-radius: 6px;
+    box-shadow: 0px 0px 10px black;
+    background: rgba(255,255,255,0.7);
+    cursor: pointer;
+}
+
+.input:focus{
+    box-shadow: 0px 0px 5px #69c5db;
+}
+
+.first{
+    padding-left: 30px;
+}
+
+.user-info{
+    position: absolute;
+    right: 10px;
+    font-size: 9px;
+}
+
+/*WRAPPER DECLARATION*/
+.global-wrapper{
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header{
+    position: relative;
+    margin-top: 150px;
+    height: 300px;
+}
+
+.content{
+    margin-top: 20px;
+    min-height: 600px;
+}
+
+.page-content{
+    z-index: 2;
+    padding: 20px 20px 20px 20px;
+}
+
+.footer{
+    margin-top: 20px;
+    margin-bottom: 200px;
+    height: 100px;
+    text-align: center;
+}
+
+#datetime{
+    display: block;
+    margin-top: 45px;
+}
+
+.twitch-video{
+    
+}
+
+/*TRANSPARENT BACKGROUND*/
+.parrent{
+    border-radius: 5px;
+    background: rgba(255,255,255,0.4);
+}
+
+.logo{
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    opacity: 0.6;
+}
+
+.corner{
+    position: absolute;
+    background: url(images/corner.png);
+    background-size: 100px;
+    right: 10px;
+    bottom: 10px;
+    width: 100px;
+    height: 100px;
+}
+
+/*NAVIGATION MENU*/
+.nav{
+    font-family: Calibri;
+    position: absolute;
+    left: 20px;
+    bottom: 5px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px gray;
+    font-size: 13px;
+}
+
+.nav ul li{
+    list-style: none;
+    display: inline-block;
+}
+
+.nav-list{
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    padding-top: 15px;
+    padding-left: 4px;
+    padding-right: 4px;
+    font-weight: bold;
+    display: inline-block;
+    height: 30px !important;
+}
+
+.nav-submenu{
+    display: none;
+    background: rgba(255,255,255,0.7);
+    position: absolute;
+    left: inherit;
+    top: inherit;
+    z-index: 999;
+    box-shadow: 0px 0px 10px gray;
+    width: 28%;
+}
+
+.nav-submenu .nav-list{
+    padding: 5px 10px 10px 5px;
+    height: 10px !important;
+}
+
+.nav-submenu li{
+    display: block !important;
+}
+
+.nav-list:afterr, :active{
+    color: inherit;
+}
+
+.nav ul{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.nav-list:hover{
+    text-decoration: underline;
+}
+
+.expandable:hover .nav-submenu{
+    display: block;
+}
+
+.nav-submenu:focus{
+    display: block;
+}
+
+/*TABS NAVIGATION*/
+.tabs{
+    display: none;
+}
+
+.active{
+    display: inherit !important;
+}
