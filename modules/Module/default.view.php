@@ -2,8 +2,8 @@
 <script>
     __home = '<?=Site::base_url()?>';
 </script>
-<script src="<?=Site::js_url()?>module.js"></script>
-<link href="<?=Site::css_url()?>content_css/module.css" rel="stylesheet">
+<script src="<?=Site::module_url()?>Module/module.js"></script>
+<link href="<?=Site::module_url()?>Module/module.css" rel="stylesheet">
 
 <?php //html ?>
 

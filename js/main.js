@@ -1,19 +1,25 @@
 
-function ajaxRequestCore (action){
-        var thisurl = "";
-        if (action === 'action') thisurl = __home + "core/async/do.php?module=Module&command=functionname";
-
-        $.ajax({
-                dataType: "json",
-                type: "POST",
-                url: thisurl,
-                data:{data:JSON.stringify({hash:window.location.hash})},
-                success: function(data, textStatus, jqXHR) {
-                    if (action === 'action') {}
-                }
-        });
-        
-        return false;
+function ajaxRequestCore (module, title){
+        var thisurl = __home + "?module=" + module;
+        var DOM;
+            $.ajax({ type: "GET",
+                     url: thisurl,
+                     async: false,
+                     success : function(text)
+                     {
+                         window.history.replaceState("page_" + title, title, thisurl);
+                         document.title = title;
+                         
+                         var element = '.page-content';
+                         var $content = $(element);
+                         
+                        $content.hide(0, function(){
+                            //Pārlādējam tikai lapas satura html
+                            DOM = $('<div>' + text + '</div>');
+                            $content.html( DOM.find(element).html() );
+                        });
+                     }
+            });
     }
     
 

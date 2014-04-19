@@ -27,19 +27,43 @@ class async extends controller
 $get = $_GET;
 $post = $_POST;
 
-if(isset($_GET['module'])){
-    $async = new async($get, $post);
-    $async->start();
-    
-    $module = $_GET['module'];
-    $command ='async__' . $_GET['command'];
-    $module_url = Site::module_url();
-    
-    include "{$module_url}{$module}.php";
-    //$q = $async->query();
-    //$d = $async->data();
-    
-    $async_instance = new $module(false, false, $async->db());
-    $async_instance->$command($get, $post);
-    $async->end();
- }
+    if(isset($_GET['system']) == 'true')
+    {
+        if(isset($_GET['sysmodule']))
+        {
+            if(isset($_GET['module']))
+            {
+                $async = new async($get, $post);
+                $async->start();
+                
+                $module = $_GET['module'];
+                $path = $_GET['sysmodule'];
+                $command ='async__' . $_GET['command'];
+                $home = Site::home_url();
+                
+                include "{$home}/core/{$path}/{$module}.php";
+                
+                $async_instance = new $module(false, false, $async->db());
+                $async_instance->$command($get, $post);
+                $async->end();
+            }
+        }
+    }
+    else
+    {
+        if(isset($_GET['module']))
+        {
+            $async = new async($get, $post);
+            $async->start();
+
+            $module = $_GET['module'];
+            $command ='async__' . $_GET['command'];
+            $module_url = Site::module_url();
+
+            include "{$module_url}{$module}/{$module}.php";
+
+            $async_instance = new $module(false, false, $async->db());
+            $async_instance->$command($get, $post);
+            $async->end();
+        }
+    }

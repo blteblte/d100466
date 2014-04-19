@@ -1,0 +1,26 @@
+#user-list-table {
+    width: 400px;
+}
+
+#user-list-table-id {
+    width: 30px;
+}
+
+#user-list-table-nick {
+    width: 60px;
+}
+
+.user-list-table-glyph {
+    width: 40px;
+}
+
+.data-table-head{
+    font-weight: bold;
+    border-bottom: solid 2px #999999;
+}
+
+.span{
+    font-size: 0.6em;
+    display: inline-block;
+    word-wrap: break-word;
+}

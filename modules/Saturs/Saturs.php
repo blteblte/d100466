@@ -1,11 +1,11 @@
 <?php
 
-class TestClass {
+class Saturs {
     
     protected $db;
     protected $query;
     protected $data;
-    protected $title = 'TestClass';
+    protected $title = 'Saturs';
     
     public function __construct($query, $data, $db) {
         $this->db = $db;
@@ -15,22 +15,18 @@ class TestClass {
     public function db() {return $this->db;}
     public function title() {echo $this->title;}
     
-    public function renderMENU() {
-        include (Site::view_url() . 'default_menu.view.php');
-    }
-    
     public function renderHTML() {
         //ob_start();
         
             //INCLUDE HTML HERE
-            include (Site::view_url() . 'test.view.php');
-        
+            include ('saturs.view.php');
+            
         //ob_get_clean();
     }
 
     public function async__functionname($query, $data) {
         
-        $sql = "SELECT user_id, user_name, user_value FROM user";
+        $sql = "";
         $result = $this->db()->query($sql)->fetchAll(PDO::FETCH_ASSOC);
         
         die(json_encode(array('status'=>'OK', 'data'=>$result)));

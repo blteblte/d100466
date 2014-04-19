@@ -5,7 +5,7 @@ class Site
     private $url;
     
     public function site_descriptor($action) {
-        $config = (include '/conf/configuration.php');
+        $config = (include 'conf/configuration.php');
         $this->Url = $config[''.$action.''];
         return $this->Url;
     }
@@ -18,6 +18,8 @@ class Site
     public static function template_url() {return site_get('template_url');}
     public static function css_url() {return site_get('css_url');}
     public static function img_url() {return site_get('img_url');}
+    public static function data() {return site_get('data');}
+    public static function virtual_module() {return site_get('virtual_module');}
     
     
 }

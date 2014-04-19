@@ -1,32 +1,42 @@
 <?php
 /*
- * M.Bitenieks @ LatInSoft
- * y: 2013
+ * M.Bitenieks @ Daugavpils Universitate
+ * y: 2014
  * 
  * Simple framweork to process AJAX based web development
  */
 
-$config = (include '/core/Site.php');
+session_start();
+
+$config = (include 'core/Site.php');
+require_once 'core/controller.php';
+require_once 'core/UserManager.php';
+
+$connection = new controller();
+$connection->start();
 
 $get = $_GET;
 $post = $_POST;
 
-if(isset($_GET['module'])){
-    
-    $module = $_GET['module'];
-    $module_url = Site::module_url();
-    
-    include "{$module_url}{$module}.php";
-    //$q = $async->query();
-    //$d = $async->data();
-    
-    $load = new $module($get, $post, NULL);
- }
- else {
-     //define default module to be loaded
-    $module_url = Site::module_url();
-    include "{$module_url}Saturs.php";
-    $load = new Saturs(NULL, NULL, NULL);
- }
+//Static requests via URL
+    if(isset($_GET['module'])){
 
-include Site::template_url() . 'default.php';
+        $module = $_GET['module'];
+        $module_url = Site::module_url();
+
+        include "{$module_url}{$module}/{$module}.php";
+
+
+        $load = new $module($get, $post, $connection->db());
+     }
+     else {
+         //define default module to be loaded
+        $module_url = Site::module_url();
+        include "{$module_url}Home/Home.php";
+        $load = new Home(NULL, NULL, $connection->db());
+     }
+ 
+ $connection->end();
+ 
+//Pievienot galveno TEMPLATE
+include Site::template_url() . 'default/default.php';

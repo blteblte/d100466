@@ -1,11 +1,10 @@
-<?php //global string variables used in script ?>
+<?php //globālie mainīgie, kas tiek var tikt pielietoti JS skriptā ?>
 <script>
     __home = '<?=Site::base_url()?>';
 </script>
-<!-- script src="<?=Site::js_url()?>module.js"></script-->
-<!--link href="<?=Site::css_url()?>content_css/module.css" rel="stylesheet"-->
+<script src="<?=Site::virtual_module()?>Home/this.js"></script>
 
-<?php //html ?>
+<?php //tālāk HTML: ?>
 
     <!-- MODULE CONTENT -->
     <div class="tab-content">
