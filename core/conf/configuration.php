@@ -1,16 +1,20 @@
 <?php
-/*
- *  END url must contain all slashes including the one after url
- */
+// en: Path configuration for site. Can use in localhost as well as server.
+// lv: Ceļu konfigurācija gan localhost gan serverim.
 
 $server = $_SERVER['DOCUMENT_ROOT'];
 
-//folder for localhost
+// en: You can define subpath and phpAjax will see this as your site root
+// lv: Var definēt apakšceļu un phpAjax to uztvers kā saita saimniekmapi
     $root = '/d100466';
 
-//root on server
+// en: Use this in server configuration.
+// lv: Lietot šo servera konfigurācijai
     //$root = '';
 
+
+// en: Call this using static functions defined in /core/Site.php
+// lv: Izsaukt šo izmantoot statiskās funkcijas definētas /core/Site/php
 return array(
     "home_url"=>"{$server}{$root}/",
     "base_url"=>"{$root}/",
