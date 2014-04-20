@@ -16,6 +16,9 @@
 //
 // en: Also you can call here any static functions as you desire.
 // lv: Tāpat protams iespējams izsaukt jebkuru statisku funkciju pēc nepieciešamības.
+//
+// en: ! jQuery is required for this framework !
+// lv: ! jQuery ir obligāts !
 ?>
 
 <!DOCTYPE html>
