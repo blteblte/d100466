@@ -1,6 +1,7 @@
 <?php
 
-//System module -> Lietotāja reģistrēšana
+// en: SysModule for user registration and login
+// lv: Sistēmmodulis lietotāja reģistrēšanai un pieslēgšanās operācijas veikšanai
 
 class registration {
     
@@ -13,7 +14,8 @@ class registration {
     public $UsersDataColumns = array();
     public $UsersData = array();
     
-    //Inicializējam savienojumu ar DB dotajam modulim
+    // en: Init DB connection with the module.
+    // lv: Inicializējam savienojumu ar DB dotajam modulim
     public function __construct($query, $data, $db) {
         $this->db = $db;
         $this->query = $query;
@@ -25,7 +27,8 @@ class registration {
         include(Site::data() . 'User.php');
     }
     
-    //Asinhron funkcija
+    // en: Async function
+    // lv: Asinhronā funkcija
     public function async__CheckIfUserNameIsFree($query, $data) {
         $valid = 1;
         $email = '';
