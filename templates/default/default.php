@@ -19,12 +19,15 @@
 //
 // en: ! jQuery is required for this framework !
 // lv: ! jQuery ir obligāts !
+// en: <meta url=""> is required for correct AJAX navigation!
+// lv: <meta url=""> ir obligāts korektai AJAX navigācijai!
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
-        <title><?php $load->title(); ?></title>
+        <title><?=ProjectConstants::TITLE_PREFIX?><?php $load->title(); ?></title>
+        <meta url="<?=Site::base_url().Site::URL_PREFIX.get_class($load)?>" />
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
         <script src="<?=Site::base_url()?>core/include/jquery-1.10.2.min.js"></script>
@@ -44,12 +47,11 @@
                 </section>
                 <nav class="nav">
                     <ul>
-                        <li><a class="nav-list" onclick="ajaxRequestCore('Home','Mājas')">MĀJAS</a></li>
+                        <li><a class="nav-list" onclick="ajaxRequestCore('Home')">MĀJAS</a></li>
+                        <li><a class="nav-list" onclick="ajaxRequestCore('AdminPage')">ADMIN</a></li>
                         <li class="expandable"><a class="nav-list">DOKUMENTĀCIJA</a>
                             <ul class="nav-submenu">
-                                <li><a class="nav-list" onclick="ajaxRequestCore('Saturs','Saturs')">Saturs</a></li>
-                                <li><a class="nav-list" onclick="ajaxRequestCore('Module','Modulis')">Module</a></li>
-                                <li><a class="nav-list" onclick="ajaxRequestCore('AdminUsers','Lietotāju Administrēšana')">Users</a></li>
+                                <li><a class="nav-list" onclick="ajaxRequestCore('Saturs')">Saturs</a></li>
                             </ul>
                         </li>
                         <li><a class="nav-list">DROŠĪBA</a></li>

@@ -153,6 +153,22 @@ class User
     }
     
     /**
+    * en: Generate delete scripts for record. Use on existing record
+    * lv: Ģenerē dzēsšanas pieprasījumu. Lietot eksistējošam ierakstam
+    * 
+    * @return	int     ? 0 : 1
+    */
+    public function Delete(){
+        $table = get_class($this) . 's';
+        
+        $sql = "DELETE FROM {$table} WHERE {$this->pk} = ':id'";
+        $statement = $this->db()->prepare($sql);
+        $statement->bindParam(':id', $this->pk, PDO::PARAM_INT);
+        $statement->execute();
+        return 1;
+    }
+    
+    /**
     * en: Get all teble data and return object collection
     * lv: Saņem visus tabulas datus un atgriež DB objektu kolekciju
     * 

@@ -26,8 +26,8 @@ class UserManager
     * @return	string     @$_SESSION['username']	username
     */
     public static function ActiveUserName(){
-        if (isset($_SESSION['username'])) return $_SESSION['username'];
-        else return '';
+        if (isset($_SESSION['username'])) {return $_SESSION['username'];}
+        else {return '';}
     }
     
     /**
@@ -37,8 +37,19 @@ class UserManager
     * @return	string     @$_SESSION['password']	password hash
     */
     public static function ActiveUserPwHash(){
-        if (isset($_SESSION['password'])) return $_SESSION['password'];
-        else return '';
+        if (isset($_SESSION['password'])) {return $_SESSION['password'];}
+        else {return '';}
+    }
+    
+    /**
+    * en: Gets Users AccessLevel
+    * lv: Saņem lietotāja piekļuves tiesības
+    *
+    * @return	int     @$_SESSION['accesslevel']	AccessLevel
+    */
+    public static function GetUserAccessLevel(){
+        if (isset($_SESSION['loggedin'])) {return $_SESSION['accesslevel'];}
+        else {return AccessLevels::DEFAULT_ACCESS_LEVEL;}
     }
 }
 

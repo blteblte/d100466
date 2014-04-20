@@ -7,11 +7,19 @@
 * @version Look at /index.php
 */
 
+// en: included core components
+// lv: pievienotās kodola komponentes
+require_once 'controller.php';
+require_once 'AccessLevels.php';
+require_once 'UserManager.php';
+require_once 'ProjectConstants.php';
+
 // en: Class of static functions returning cinfiguration values
 // lv: Statisku funkciju klase kas atgriež konfigurācijas vērtības
-
 class Site
 {
+    CONST URL_PREFIX = "?module=";
+    
     private $url;
     
     public function site_descriptor($action) {

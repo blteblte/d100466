@@ -99,8 +99,8 @@ class registration {
     * @return	int     @success	? 1 : 0
     */
    public function async__RegisterNewUser($query, $data) {
-       
-       //lietotāja paroļu skriptēšanas saderības bibliotēka ar vecākām PHP versijām
+       // en: Compatibility library for elder versions of PHP providing password hashing options
+       // lv: Saderības bibiliotēka ar vecākām PHP versijām, kas nodrošina lietotāja paroļu šifrēšanas iespējas
        require_once Site::home_url().'core/registration/password.php';
        
        $uname = ''; $email = ''; $pw = '';
@@ -116,7 +116,8 @@ class registration {
        }
        if (isset($data["reg-pw"]))
        {
-           //noklusējuma algoritms var mainīties: lietojiet lauku ar izmēru (255)
+           // en: Default encripting alghorythm may change over time. User password fields with (255) size.
+           // lv: Noklusējuma kriptēšanas algoritms var mainīties. Izmanto (255) paroles lauka izmēram.
            $pw = password_hash($data["reg-pw"], PASSWORD_DEFAULT);
        }
        
@@ -157,6 +158,8 @@ class registration {
     * @return   string  @password   password hash : ''
     */
    public function async__VerifyUser($query, $data) {
+       // en: Compatibility library for elder versions of PHP providing password hashing options
+       // lv: Saderības bibiliotēka ar vecākām PHP versijām, kas nodrošina lietotāja paroļu šifrēšanas iespējas
        require_once Site::home_url().'core/registration/password.php';
        
        $uname = ''; $pw = ''; $password = '';
@@ -213,6 +216,7 @@ class registration {
    public function loginUser($uname, $password){
        session_start();
        $_SESSION['loggedin'] = true;
+       $_SESSION['accesslevel'] = AccessLevels::REGISTERED_ACCESS_LEVEL;
        $_SESSION['username'] = $uname;
        $_SESSION['password'] = $password;
    }

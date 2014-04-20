@@ -15,15 +15,15 @@
 // lapu var izsaukt javascript:coreRequestAjax(DotāModuļaNosaukums, LapasVirsraksts)
 // izmantojot AJAX, vai nodot /?module=DotāModuļaNosaukums uz /index.php lai pārlādētu lapu pilnībā
 
-class Home {
+class AdminPage {
     
     protected $db;
     protected $query;
     protected $data;
-    protected $title = 'Mājas';
+    protected $title = 'Administratora Sadaļa';
     
     public function AccessLevel() {
-        return AccessLevels::DEFAULT_ACCESS_LEVEL;
+        return AccessLevels::REGISTERED_ACCESS_LEVEL;
     }
     
     /**

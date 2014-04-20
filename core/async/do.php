@@ -23,6 +23,10 @@ require_once '../Site.php';
  // lv: Pievienojam DB pieslēguma instanci
 require_once '../controller.php';
 
+ // en: Including AccessLevels
+ // lv: Pievienojam piekļuves tiesību definīcijas
+require_once '../AccessLevels.php';
+
 class async extends controller
 {
     private $query;

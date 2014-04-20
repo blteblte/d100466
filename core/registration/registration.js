@@ -37,9 +37,6 @@ $(function(){
             $('.logout-btn').fadeIn(300);
         });
     }
-    
-    console.log(___user_is_registered);
-    console.log(__username);
 });
 
     function showError($el, txt){

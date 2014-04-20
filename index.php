@@ -1,21 +1,24 @@
 <?php
 /*
- * M.Bitenieks @ Daugavpils Universitate
+ * Daugavpils Universitate
  * y: 2014
  * 
- *
  * en: Simple framework for AJAX based WEB development
- * 
  * lv: Vienkārša sistēma AJAX bāzētu WEB izstrādņu veidošanai.
  * 
- *  
+ * @author Mārtiņš Bitenieks
+ * @licence http://www.opensource.org/licenses/mit-license.html MIT License
+ * @version 0.8
+ * 
  */
 
-session_start();
+// en: Define your TITLE prefix in /core/ProjectConstants.php
+// lv: Definē sava prjekta TITLE prefiksu /core/ProjectConstants.php
 
+session_start();
+// en: Including configuration
+// lv: Pievienojam konfigurāciju
 $config = (include 'core/Site.php');
-require_once 'core/controller.php';
-require_once 'core/UserManager.php';
 
 // en: Initializing DB connection. Single connection is used for all database queries during single request.
 // After request the connection gets closed.
@@ -36,13 +39,41 @@ $post = $_POST;
 
         include "{$module_url}{$module}/{$module}.php";
         $load = new $module($get, $post, $connection->db());
+        
+        // en: Checking user rights to access this module
+        // lv: Pārbaudām lietotāja tiesības piekļūt šim modulim
+        if ($load->AccessLevel() > UserManager::GetUserAccessLevel())
+        {
+            $module_url = Site::module_url();
+            include "{$module_url}Home/Home.php";
+            $load = new Home(NULL, NULL, $connection->db());
+            
+            // en: Default module should always have default access level
+            // lv: Noklusējuma modulim vienmēr vajadzētu būt ar noklusējuma piekļuves tiesībām
+            if ($load->AccessLevel() > UserManager::GetUserAccessLevel())
+            {
+                echo "<html><head><title>ERROR</title></head><body><h1>You do not have rights to view this page</h1></body></html>";
+                $connection->end();
+                return;
+            }
+        }
      }
      else {
-         //en: Define default module to be loaded for root request
-         //lv: Nodefinējam noklusējuma moduli saimniekmapes pieprasījumiem
+         // en: Define default module to be loaded for root request. Default
+         // module should always have default AccessLevel
+         // lv: Nodefinējam noklusējuma moduli saimniekmapes pieprasījumiem.
+         // Noklusējuma modulim vienmēr vajadzētu būt ar noklusējuma piekļuves
+         // tiesībām
         $module_url = Site::module_url();
         include "{$module_url}Home/Home.php";
         $load = new Home(NULL, NULL, $connection->db());
+        
+        if ($load->AccessLevel() > UserManager::GetUserAccessLevel())
+        {
+            echo "<html><head><title>ERROR</title></head><body><h1>You do not have rights to view this page</h1></body></html>";
+            $connection->end();
+            return;
+        }
      }
 // en: Destroying connection to DB
 // lv: Iznīcinām pieslēgmu pie datubāzes

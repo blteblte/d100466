@@ -7,6 +7,10 @@ class AdminUsers {
     protected $data;
     protected $title = 'Module';
     
+    public function AccessLevel() {
+        return AccessLevels::REGISTERED_ACCESS_LEVEL;
+    }
+    
     public $UsersDataColumns = array();
     public $UsersData = array();
     
