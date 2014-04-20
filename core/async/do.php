@@ -1,6 +1,6 @@
 <?php
 /*
- *  Framework @d100466 -2014-
+ *  Framework @d100466 phpAJAX -2014-
  * 
  *  Controlls ASYNC commands
  */
