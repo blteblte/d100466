@@ -1,4 +1,11 @@
 <?php
+/**
+* phpAJAX simple framework for agile AJAX development
+* 
+* @author Mārtiņš Bitenieks
+* @licence http://www.opensource.org/licenses/mit-license.html MIT License
+* @version Look at /index.php
+*/
 
 // en: SysModule for user registration and login
 // lv: Sistēmmodulis lietotāja reģistrēšanai un pieslēgšanās operācijas veikšanai
@@ -27,8 +34,14 @@ class registration {
         include(Site::data() . 'User.php');
     }
     
-    // en: Async function
-    // lv: Asinhronā funkcija
+    /**
+    * en: Checs if email is free or exists in DB
+    * lv: Pārbauda vai epasts ir brīvs vai eksistējošs DB
+    * 
+    * @param    string	$_GET['email']	email
+    *
+    * @return	int     @valid	? 1 : 0
+    */
     public function async__CheckIfUserNameIsFree($query, $data) {
         $valid = 1;
         $email = '';
@@ -48,6 +61,14 @@ class registration {
         die(json_encode($valid));
    }
    
+   /**
+    * en: Checs if username is free or exists in DB
+    * lv: Pārbauda vai lietotājvārds ir brīvs vai eksistējošs DB
+    * 
+    * @param	$_GET['uname']	username
+    *
+    * @return	int     @valid	? 1 : 0
+    */
    public function async__CheckIfUnameIsFree($query, $data) {
         $valid = 1;
         $uname = '';
@@ -67,6 +88,16 @@ class registration {
         die(json_encode($valid));
    }
    
+   /**
+    * en: Register and login new user
+    * lv: Reģistrēt un pieslēgt jaunu lietotāju
+    * 
+    * @param    string	$_POST['reg-uname']	username
+    * @param    string	$_POST['reg-email']	email
+    * @param    string	$_POST['reg-pw']	password
+    *
+    * @return	int     @success	? 1 : 0
+    */
    public function async__RegisterNewUser($query, $data) {
        
        //lietotāja paroļu skriptēšanas saderības bibliotēka ar vecākām PHP versijām
@@ -112,6 +143,19 @@ class registration {
        die(json_encode($success));
    }
    
+   /**
+    * en: Verify User. If @login set logs in user
+    * lv: Validē lietotāju. Ja @login ir norādīts pieraksta lietotāju sesijā
+    * 
+    * @param    string	$_POST['login-uname']	username
+    * @param    string	$_POST['login-email']	email
+    * @param    string	$_POST['login-pw']	    password
+    * @param    int 	$_GET['login']  	    flag
+    *
+    * @return	int     @success	1 : 0
+    * @return   string  @uname      username : ''
+    * @return   string  @password   password hash : ''
+    */
    public function async__VerifyUser($query, $data) {
        require_once Site::home_url().'core/registration/password.php';
        
@@ -151,10 +195,21 @@ class registration {
        die(json_encode(array('success' => $success, 'username' => $uname, 'password' => $password)));
    }
    
+   // en: Async - logout user
+   // lv: Asonhroni atslēgt lietotāju
    public function async__Logout(){
        $this->logoutUser();
    }
    
+   /**
+    * en: Login user
+    * lv: Pieslēgt lietotāju
+    * 
+    * @param    string	$uname	username
+    * @param    string	$password	password
+    *
+    * @return	void
+    */
    public function loginUser($uname, $password){
        session_start();
        $_SESSION['loggedin'] = true;
