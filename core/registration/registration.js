@@ -221,7 +221,7 @@ $(function(){
                     async: false,
                     type: "GET",
                     url: __home + "core/async/do.php?system=true&sysmodule=registration"
-                        + "&module=registration&command=CheckIfUserNameIsFree&email=" + email,
+                        + "&module=registration&command=CheckIfEmailIsFree&email=" + email,
                     success: function(response) {
                         if (response != 1) {
                             valid = showError($el, 'Atvainojiet, bet šī e-pasta adrese jau ir aizņemta!');

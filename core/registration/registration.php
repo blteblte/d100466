@@ -42,7 +42,7 @@ class registration {
     *
     * @return	int     @valid	? 1 : 0
     */
-    public function async__CheckIfUserNameIsFree($query, $data) {
+    public function async__CheckIfEmailIsFree($query, $data) {
         $valid = 1;
         $email = '';
         if (isset($query['email']))
