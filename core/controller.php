@@ -56,4 +56,5 @@ class controller
     public function end() {
         $this->Db = NULL;
     }
+    
 }
