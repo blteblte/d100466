@@ -4,7 +4,20 @@
  * 
  *  Controlls ASYNC commands
  */
+ // en: Core: Module: Controlling ASYNCHRONOUS calls. You can use 2 types of calls in current version:
+ // - To call modules defined in /root/Modules/
+ // - To call system extensions defined in /root/core/nameofextensionmodule/
+ // lv: Core: Module: Kontrolē ASINHRONOS izsaukumus. Dotajā versijā var izmantot 2 tipus asinhrono
+ // pieprasījumu veikšanai:
+ // - Lai izsauktu moduļus definētus /root/Modules/
+ // - Lai izsauktu sistēmmoduļus definētus /root/core/sistēmmoduļanosaukums/
+ 
+ // en: Adding configuration methods
+ // lv: Pievienojam konfigurācijas metodes
 require_once '../Site.php';
+ 
+ // en: Adding DB connection instance
+ // lv: Pievienojam DB pieslēguma instanci
 require_once '../controller.php';
 
 class async extends controller
@@ -20,9 +33,12 @@ class async extends controller
     public function data() {return $this->data;}
 }
 
-/*
- *  Parsing AJAX request
- */
+// en: Parsing AJAX request.
+//  - Define ?system=true, &sysmodule=foldername, &module=modulename to call system modules
+//  - Define ?module=modulenameandfoldername to call modules
+// lv: Apstrādājam AJAX pieprasījumu.
+//  - Definējam ?system=true, &sysmoule=mapesnosaukums, &module=moduļanosaukums lai izsauktu sistēmmoduļus
+//  - Definējam ?module=moduļaunmapesnosaukums lai izsauktu moduli
 
 $get = $_GET;
 $post = $_POST;
