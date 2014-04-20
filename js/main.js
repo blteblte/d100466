@@ -1,4 +1,3 @@
-
 function ajaxRequestCore (module, title){
         var thisurl = __home + "?module=" + module;
         var DOM;
@@ -14,7 +13,6 @@ function ajaxRequestCore (module, title){
                          var $content = $(element);
                          
                         $content.hide(0, function(){
-                            //Pārlādējam tikai lapas satura html
                             DOM = $('<div>' + text + '</div>');
                             $content.html( DOM.find(element).html() );
                         });
