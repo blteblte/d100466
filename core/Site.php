@@ -1,4 +1,14 @@
 <?php
+/**
+* phpAJAX simple framework for agile AJAX development
+* 
+* @author Mārtiņš Bitenieks
+* @licence http://www.opensource.org/licenses/mit-license.html MIT License
+* @version Look at /index.php
+*/
+
+// en: Class of static functions returning cinfiguration values
+// lv: Statisku funkciju klase kas atgriež konfigurācijas vērtības
 
 class Site
 {
@@ -9,9 +19,17 @@ class Site
         $this->Url = $config[''.$action.''];
         return $this->Url;
     }
-
+    
+    /**
+    * en: Get URL
+    * lv: Saņemt URL
+    * 
+    * @param    none
+    *
+    * @return	string     @success	URL
+    */
     public static function home_url() {return site_get('home_url');}
-	public static function base_url() {return site_get('base_url');}
+    public static function base_url() {return site_get('base_url');}
     public static function module_url() {return site_get('module_url');}
     public static function view_url() {return site_get('view_url');}
     public static function js_url() {return site_get('js_url');}
