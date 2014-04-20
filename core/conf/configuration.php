@@ -1,4 +1,13 @@
 <?php
+/**
+* phpAJAX simple framework for agile AJAX development
+* 
+* @author Mārtiņš Bitenieks
+* @licence http://www.opensource.org/licenses/mit-license.html MIT License
+* @version Look at /index.php
+*/
+
+
 // en: Path configuration for site. Can use in localhost as well as server.
 // lv: Ceļu konfigurācija gan localhost gan serverim.
 
