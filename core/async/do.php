@@ -1,9 +1,12 @@
 <?php
-/*
- *  Framework @d100466 phpAJAX -2014-
- * 
- *  Controlls ASYNC commands
- */
+/**
+* phpAJAX simple framework for agile AJAX development
+* 
+* @author Mārtiņš Bitenieks
+* @licence http://www.opensource.org/licenses/mit-license.html MIT License
+* @version Look at /index.php
+*/
+
  // en: Core: Module: Controlling ASYNCHRONOUS calls. You can use 2 types of calls in current version:
  // - To call modules defined in /root/Modules/
  // - To call system extensions defined in /root/core/nameofextensionmodule/
