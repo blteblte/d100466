@@ -51,5 +51,15 @@ class UserManager
         if (isset($_SESSION['loggedin'])) {return $_SESSION['accesslevel'];}
         else {return AccessLevels::DEFAULT_ACCESS_LEVEL;}
     }
+    
+    /**
+    * en: Gets Active user ID
+    * lv: Saņem pieslēgtā lietotāja ID
+    *
+    * @return	int     @$_SESSION['accesslevel']	AccessLevel
+    */
+    public static function GetActiveUser(){
+        if (isset($_SESSION['loggedin'])){return $_SESSION['user'];}
+    }
 }
 

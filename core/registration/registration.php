@@ -12,14 +12,9 @@
 
 class registration {
     
-    CONST USER_TYPE_SIMPLE_USER = 4;
-    
     protected $db;
     protected $query;
     protected $data;
-    
-    public $UsersDataColumns = array();
-    public $UsersData = array();
     
     // en: Init DB connection with the module.
     // lv: Inicializējam savienojumu ar DB dotajam modulim
@@ -31,7 +26,7 @@ class registration {
     public function db() {return $this->db;}
     
     public function renderDataLayer(){
-        include(Site::data() . 'User.php');
+        require_once Site::data() . 'User.php';
     }
     
     /**
@@ -123,8 +118,11 @@ class registration {
        
        if ($uname != '' && $email != '' && $pw != '')
        {
-           $sql = "SELECT COUNT(*) FROM Users WHERE `username` = '{$uname}' ";
-           $result = $this->db()->query($sql)->fetch(PDO::FETCH_NUM);
+           $sql = "SELECT COUNT(*) FROM Users WHERE `username` = :uname ";
+           $statement = $this->db()->prepare($sql);
+           $statement->bindParam(':uname', $uname, PDO::PARAM_STR);
+           $statement->execute();
+           $result = $statement->fetch(PDO::FETCH_NUM);
         
            if ($result[0] > 0) {die(json_encode($success));}
            else
@@ -132,13 +130,15 @@ class registration {
                $this->renderDataLayer();
                $NewUser = new User($this->db());
 
-               $NewUser->user_type = registration::USER_TYPE_SIMPLE_USER;
+               $NewUser->user_type = AccessLevels::REGISTERED_ACCESS_LEVEL;
                $NewUser->username = $uname;
                $NewUser->email = $email;
                $NewUser->password = $pw;
 
-               $success = $NewUser->Insert();
-               $this->loginUser($uname, $pw);
+               $user_id = $NewUser->Insert();
+               $this->loginUser($uname, $pw, AccessLevels::REGISTERED_ACCESS_LEVEL, $user_id);
+               
+               $success = 1;
            }
        }
        die(json_encode($success));
@@ -176,19 +176,27 @@ class registration {
        
        if ($uname != '' && $pw != '')
        {
-            $sql = "SELECT `password` FROM Users WHERE `username` = '{$uname}' ";
-            $result = $this->db()->query($sql)->fetch(PDO::FETCH_NUM);
-            if ($result[0] != null)
+            $sql = "SELECT `password` AS `password`,"
+                    . " `user_type` AS `access_level`,"
+                    . " `user_id` AS `user_id`"
+                    . " FROM Users WHERE `username` = :uname ";
+            
+            $statement = $this->db()->prepare($sql);
+            $statement->bindParam(':uname', $uname, PDO::PARAM_STR);
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            
+            if ($result['password'] != null)
             {
-                if (password_verify($pw, $result[0]))
+                if (password_verify($pw, $result['password']))
                 {
                     $success = 1;
-                    $password = $result[0];
+                    $password = $result['password'];
                     if (isset($query["login"]))
                     {
                         if ( intval($query["login"]) == 1)
                         {
-                            $this->loginUser($uname, $password);
+                            $this->loginUser($uname, $password, $result['access_level'], $result['user_id']);
                         }
                     }
                 }
@@ -213,16 +221,15 @@ class registration {
     *
     * @return	void
     */
-   public function loginUser($uname, $password){
-       session_start();
-       $_SESSION['loggedin'] = true;
-       $_SESSION['accesslevel'] = AccessLevels::REGISTERED_ACCESS_LEVEL;
-       $_SESSION['username'] = $uname;
-       $_SESSION['password'] = $password;
+   public function loginUser($uname, $password, $access_level, $user_id){
+       $_SESSION['loggedin']    = true;
+       $_SESSION['accesslevel'] = $access_level;
+       $_SESSION['user']        = $user_id;
+       $_SESSION['username']    = $uname;
+       $_SESSION['password']    = $password;
    }
    
    public function logoutUser(){
-       session_start();
        session_destroy();
    }
 

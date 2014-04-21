@@ -15,6 +15,8 @@
  // - Lai izsauktu moduļus definētus /root/Modules/
  // - Lai izsauktu sistēmmoduļus definētus /root/core/sistēmmoduļanosaukums/
  
+ session_start();
+
  // en: Adding configuration methods
  // lv: Pievienojam konfigurācijas metodes
 require_once '../Site.php';
@@ -67,6 +69,7 @@ $post = $_POST;
                 include "{$home}/core/{$path}/{$module}.php";
                 
                 $async_instance = new $module(false, false, $async->db());
+                $async_instance->renderDataLayer();
                 $async_instance->$command($get, $post);
                 $async->end();
             }
@@ -86,6 +89,7 @@ $post = $_POST;
             include "{$module_url}{$module}/{$module}.php";
 
             $async_instance = new $module(false, false, $async->db());
+            $async_instance->renderDataLayer();
             $async_instance->$command($get, $post);
             $async->end();
         }

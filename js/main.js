@@ -25,5 +25,30 @@ function ajaxRequestCore (module){
             });
     }
     
+    function ajaxRequest (async, callback, module, command, get, form){
+        var thisurl = __home + "core/async/do.php?module="+module+"&command="+command+get;
+        var type, data;
+
+
+        if (form !== undefined) {
+            data = form.serialize();
+            type = "POST";
+        }
+        else {
+            data = {data:JSON.stringify({hash:window.location.hash})};
+            type = "GET";
+        }
+
+        $.ajax({
+                async: async,
+                dataType: "json",
+                type: type,
+                url: thisurl,
+                data: data,
+                success: callback
+        });
+        return false;
+    }
+    
 
 

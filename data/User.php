@@ -10,6 +10,11 @@
 // en: DataLayer creating DB object using information from DB table. With use for single PK tables.
 // lv: Datu slānis DB objektu veidošanai izmantojot informāciju par DB tabulu. Lieto vienas PK ietvaros.
 
+
+// en: Name tables as "Users", but its representiv object as "User". Following: 
+// TABLE: "Employees" -> CLASS: "Employee"
+// lv: Saukt tabulas kā "Users", bet respektīvajā objektā "User". Sekojoši:
+// TABULA: "Employees" -> KLASSE: "Employee"
 class User
 {
     protected $con;
@@ -81,7 +86,7 @@ class User
     * en: Generate insert script and executed prepared PDO statement
     * lv: Ģenerē insert skriptu in izpilda sagatavoto PDO pieprasījumu
     * 
-    * @return	int     ? 0 : 1
+    * @return	ID     ID of inserted record
     */
     public function Insert(){
         $nullColumns = $this->getNullColumnsCount();
@@ -114,22 +119,24 @@ class User
         $statement = $this->db()->prepare($sql);
         foreach($this->data as $col)
         {
-            if ($this->$col != null) $DBDATA[":{$col}"] = $this->$col;
+            if ($this->$col != null) {$DBDATA[":{$col}"] = $this->$col;}
         }
+        //return $statement->execute($DBDATA) or die(print_r($statement->errorInfo(), true));
         $statement->execute($DBDATA);
-        return 1;
+        
+        return $this->db()->lastInsertId();
     }
     
     /**
     * en: Generate update script and executed prepared PDO statement
     * lv: Ģenerē update skriptu in izpilda sagatavoto PDO pieprasījumu
     * 
-    * @return	int     ? 0 : 1
+    * @return	int     ? true : false
     */
     public function Update(){
         $nullColumns = $this->getNullColumnsCount();
         $table = get_class($this) . 's';
-        $sql = "UPDATE {$table} SET (";
+        $sql = "UPDATE {$table} SET ";
         
         $i = 0;
         foreach($this->data as $col){ 
@@ -140,31 +147,30 @@ class User
                 $i++;
             }
         }
-        $sql .= ") WHERE {$this->pk} = {$this->$this->pk}";
+        $sql .= " WHERE {$this->pk} = {$this->{$this->pk}}";
         $DBDATA = array();
         
         $statement = $this->db()->prepare($sql);
         foreach($this->data as $col)
         {
-            if ($this->$col != null) $DBDATA[":{$col}"] = $this->$col;
+            if ($this->$col != null) {$DBDATA[":{$col}"] = $this->$col;}
         }
-        $statement->execute($DBDATA);
-        return 1;
+        //return $statement->execute($DBDATA) or die(print_r($statement->errorInfo(), true));
+        return $statement->execute($DBDATA);
     }
     
     /**
     * en: Generate delete scripts for record. Use on existing record
     * lv: Ģenerē dzēsšanas pieprasījumu. Lietot eksistējošam ierakstam
     * 
-    * @return	int     ? 0 : 1
+    * @return	int     ? 1 : null
     */
     public function Delete(){
         $table = get_class($this) . 's';
+        $pk = $this->pk;
         
-        $sql = "DELETE FROM {$table} WHERE {$this->pk} = ':id'";
-        $statement = $this->db()->prepare($sql);
-        $statement->bindParam(':id', $this->pk, PDO::PARAM_INT);
-        $statement->execute();
+        $sql = "DELETE FROM {$table} WHERE {$pk} = {$this->$pk}";
+        $this->db()->query($sql);
         return 1;
     }
     
@@ -185,7 +191,7 @@ class User
         $i = 0;
         foreach($t_data as $d)
         {
-            $data[$i] = new $obj(null);
+            $data[$i] = new $obj($this->db());
             
             $data[$i]->{$this->pk} = $d["{$this->pk}"];
             foreach($this->data as $col){ 
@@ -207,14 +213,13 @@ class User
     public function Get($id){
         $table = get_class($this) . 's';
         $obj = get_class($this);
+        $thisId = intval($id);
         
-        $sql = "SELECT * FROM {$table} WHERE {$this->pk} = ':id'";
-        $statement = $this->db()->prepare($sql);
-        $statement->bindParam(':id', $id, PDO::PARAM_INT);
-        $statement->execute();
-        $t_data = $statement->fetch(PDO::FETCH_ASSOC);
+        $sql = "SELECT * FROM {$table} WHERE {$this->pk} = {$thisId}";
+        $t_data = $this->db()->query($sql)->fetch(PDO::FETCH_ASSOC);
         
-        $object = new $obj(null);
+        $object = new $obj($this->db());
+        $object->{$this->pk} = $t_data["{$this->pk}"];
         foreach($this->data as $col){ 
             $object->$col = $t_data["{$col}"];
         }
