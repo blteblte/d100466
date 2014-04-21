@@ -2,8 +2,8 @@
 <script>
     __home = '<?=Site::base_url()?>';
 </script>
-<script src="<?=Site::virtual_module()?>Home/this.js"></script>
-<link href="<?=Site::virtual_module()?>Home/this.css" rel="stylesheet">
+<script src="<?=Site::virtual_module() . get_class($this)?>/this.js"></script>
+<link href="<?=Site::virtual_module() . get_class($this)?>Home/this.css" rel="stylesheet">
 
 <?php //tālāk HTML: ?>
 

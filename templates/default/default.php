@@ -50,6 +50,7 @@
                         <li><a class="nav-list" onclick="ajaxRequestCore('Home')">MĀJAS</a></li>
                         <li><a class="nav-list" onclick="ajaxRequestCore('AdminPage')">REG</a></li>
                         <li><a class="nav-list" onclick="ajaxRequestCore('AdminUsers')">ADMIN</a></li>
+                        <li><a class="nav-list" onclick="ajaxRequestCore('Download')">LEJUPIELĀDĒT</a></li>
                         <li class="expandable"><a class="nav-list">DOKUMENTĀCIJA</a>
                             <ul class="nav-submenu">
                                 <li><a class="nav-list" onclick="ajaxRequestCore('Saturs')">Saturs</a></li>

@@ -2,7 +2,7 @@
 <script>
     __home = '<?=Site::base_url()?>';
 </script>
-<script src="<?=Site::virtual_module()?>Home/this.js"></script>
+<script src="<?=Site::virtual_module() . get_class($this)?>/this.js"></script>
 
 <?php //tālāk HTML: ?>
 
