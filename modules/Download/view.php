@@ -10,7 +10,7 @@
 <div>
     <h3>Lejupielādēt phpAJAX</h3>
     <p>phpAJAX ir bezmaksas projekta sagatave ko atļauts lejupielādēt ikvienam</p>
-    <section>
+    <section class="download">
         <a href="https://github.com/blteblte/d100466" target="__blank">
             <div class="download-btn">
                 <p>Skatīt izejas kodu</p>
