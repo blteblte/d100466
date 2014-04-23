@@ -37,18 +37,16 @@ class Site
     *
     * @return	string     @success	URL
     */
-    public static function home_url() {return site_get('home_url');}
-    public static function base_url() {return site_get('base_url');}
-    public static function module_url() {return site_get('module_url');}
-    public static function view_url() {return site_get('view_url');}
-    public static function js_url() {return site_get('js_url');}
-    public static function template_url() {return site_get('template_url');}
-    public static function css_url() {return site_get('css_url');}
-    public static function img_url() {return site_get('img_url');}
-    public static function data() {return site_get('data');}
+    public static function home_url()       {return site_get('home_url');}
+    public static function base_url()       {return site_get('base_url');}
+    public static function module_url()     {return site_get('module_url');}
+    public static function view_url()       {return site_get('view_url');}
+    public static function js_url()         {return site_get('js_url');}
+    public static function template_url()   {return site_get('template_url');}
+    public static function css_url()        {return site_get('css_url');}
+    public static function img_url()        {return site_get('img_url');}
+    public static function data()           {return site_get('data');}
     public static function virtual_module() {return site_get('virtual_module');}
-    
-    
 }
     function site_get($action) {$site_instance = new Site; return $site_instance->site_descriptor($action);}
     

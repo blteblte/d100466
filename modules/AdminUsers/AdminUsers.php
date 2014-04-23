@@ -59,7 +59,7 @@ class AdminUsers {
                     . "</div>"
                         . "<span class=\"option edit_option_{$User->user_id}\" onclick=\"hideEditPanel({$User->user_id})\" style=\"display:none\">ATCELT</span>"
                         . "<span class=\"option edit_option_{$User->user_id}\" onclick=\"saveUserData({$User->user_id})\" style=\"display:none\">SAGLABĀT</span>"
-                        . "<hr class=\"hr-table\">";
+                        . "<hr id=\"hr_{$User->user_id}\" class=\"hr-table\">";
         }
         return $html;
     }

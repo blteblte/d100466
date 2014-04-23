@@ -6,6 +6,7 @@ function deleteUser(id){
     ajaxRequest(true, function(response) {
         if (response.data == 1){
             $('#user_'+id+', .option_'+id).fadeOut(400);
+            $('#hr_'+id).fadeOut(400);
         }
     }, "AdminUsers", "DeleteUser", "&id="+id, undefined);
 }

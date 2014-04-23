@@ -25,15 +25,14 @@ $server = $_SERVER['DOCUMENT_ROOT'];
 // en: Call this using static functions defined in /core/Site.php
 // lv: Izsaukt šo izmantoot statiskās funkcijas definētas /core/Site/php
 return array(
-    "home_url"=>"{$server}{$root}/",
-    "base_url"=>"{$root}/",
-    "module_url"=>"{$server}{$root}/modules/",
-    "view_url"=>"{$server}{$root}/views/",
-    "js_url"=>"{$root}/js/",
-    "template_url"=>"{$server}{$root}/templates/",
-    "css_url"=>"{$root}/templates/",
-    "img_url"=>"{$root}/templates/img/",
-    "data"=>"{$server}{$root}/data/",
-    "virtual_module"=>"{$root}/modules/"
-    
+    "home_url"      => "{$server}{$root}/",
+    "base_url"      => "{$root}/",
+    "module_url"    => "{$server}{$root}/modules/",
+    "view_url"      => "{$server}{$root}/views/",
+    "js_url"        => "{$root}/js/",
+    "template_url"  => "{$server}{$root}/templates/",
+    "css_url"       => "{$root}/templates/",
+    "img_url"       => "{$root}/templates/img/",
+    "data"          => "{$server}{$root}/data/",
+    "virtual_module"=> "{$root}/modules/"
 );

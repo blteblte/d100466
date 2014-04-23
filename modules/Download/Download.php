@@ -18,7 +18,6 @@ class Download {
     }
     
     public function db() {return $this->db;}
-    
     public function title() {echo $this->title;}
     
     public function renderHTML() {
