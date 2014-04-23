@@ -34,7 +34,7 @@ function saveUserData(id){
     ajaxRequest(true, function(response) {
         if (response.data == 1){
             $.each($('#user_'+id+' span'), function(index, val){
-                $(val).html(data[index]);
+                $(val).text(data[index]);
             });
             hideEditPanel(id);
         }

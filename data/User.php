@@ -119,7 +119,7 @@ class User
         $statement = $this->db()->prepare($sql);
         foreach($this->data as $col)
         {
-            if ($this->$col != null) {$DBDATA[":{$col}"] = $this->$col;}
+            if ($this->$col != null) {$DBDATA[":{$col}"] = htmlentities($this->$col);}
         }
         //return $statement->execute($DBDATA) or die(print_r($statement->errorInfo(), true));
         $statement->execute($DBDATA);
@@ -153,7 +153,7 @@ class User
         $statement = $this->db()->prepare($sql);
         foreach($this->data as $col)
         {
-            if ($this->$col != null) {$DBDATA[":{$col}"] = $this->$col;}
+            if ($this->$col != null) {$DBDATA[":{$col}"] = htmlentities($this->$col);}
         }
         //return $statement->execute($DBDATA) or die(print_r($statement->errorInfo(), true));
         return $statement->execute($DBDATA);

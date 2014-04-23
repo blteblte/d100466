@@ -11,6 +11,7 @@
 // lv: pievienotās kodola komponentes
 require_once 'controller.php';
 require_once 'AccessLevels.php';
+require_once 'UserInput.php';
 require_once 'UserManager.php';
 require_once 'ProjectConstants.php';
 

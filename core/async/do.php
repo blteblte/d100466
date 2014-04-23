@@ -17,17 +17,10 @@
  
  session_start();
 
- // en: Adding configuration methods
- // lv: Pievienojam konfigurācijas metodes
 require_once '../Site.php';
- 
- // en: Adding DB connection instance
- // lv: Pievienojam DB pieslēguma instanci
 require_once '../controller.php';
-
- // en: Including AccessLevels
- // lv: Pievienojam piekļuves tiesību definīcijas
 require_once '../AccessLevels.php';
+require_once '../UserInput.php';
 
 class async extends controller
 {

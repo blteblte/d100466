@@ -16,8 +16,6 @@ class registration {
     protected $query;
     protected $data;
     
-    // en: Init DB connection with the module.
-    // lv: Inicializējam savienojumu ar DB dotajam modulim
     public function __construct($query, $data, $db) {
         $this->db = $db;
         $this->query = $query;
@@ -103,6 +101,8 @@ class registration {
        
        if (isset($data["reg-uname"]))
        {
+           // en: converting special chars
+           // lv: konvertējam speciālos simbolus
            $uname = $data["reg-uname"];
        }
        if (isset($data["reg-email"]))
@@ -132,7 +132,7 @@ class registration {
 
                $NewUser->user_type = AccessLevels::REGISTERED_ACCESS_LEVEL;
                $NewUser->username = $uname;
-               $NewUser->email = $email;
+               $NewUser->email = UserInput::Email($email);
                $NewUser->password = $pw;
 
                $user_id = $NewUser->Insert();
