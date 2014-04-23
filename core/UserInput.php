@@ -9,41 +9,99 @@
 
 class UserInput
 {
-    CONST MALICIOUS_USER_INPUT = "Sagaidāmais datu formāts nav pareizs!";
+    CONST ERROR_PREFIX = "Malicious user input: ";
+    
+    CONST MALICIOUS_USER_INPUT      = "Please check your data!",
+          NUMBER                    = "Expecting number!",
+          LETTERS                   = "Expecting letters (UTF8 apply)!",
+          EMAIL                     = "Providen email address is not valid!",
+          STD_USERNAME              = "STD: uname : Allowed letters, numbers, dashes, braces and aphostrohpes!",
+          PHONE_NUMBER              = "Providen phone number is not valid!",
+          CREDIT_CARD               = "Credit card number is not valid!";
     
     public static function Number($var)
     {
-        return (is_numeric($var)) ? $var : die(json_encode(UserInput::MALICIOUS_USER_INPUT));
+        return (is_numeric($var))
+        ? $var : die(json_encode(UserInput::ERROR_PREFIX . UserInput::EXPECTING_NUMBER));
     }
     
-    public static function Letters($subject)
+    public static function Number_AllowEmpty($var)
     {
-        return (preg_match('/^\p{L}+$/u', $subject)) ? $subject : die(json_encode(UserInput::MALICIOUS_USER_INPUT));
+        if (Trim($var) === '') return 0;
+        else
+        {
+            return UserInput::Number($var);
+        }
     }
+    
+    
+    public static function LettersName($subject)
+    {
+        return (preg_match('/^[-\' \p{L}]+$/u', $subject))
+        ? $subject : die(json_encode(UserInput::ERROR_PREFIX . UserInput::LETTERS));
+    }
+    
+    public static function LettersName_AllowEmpty($subject)
+    {
+        if (Trim($subject) === '') return '';
+        else
+        {
+            return UserInput::LettersName($subject);
+        }
+    }
+    
     
     public static function Email($subject)
     {
         return (preg_match('/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/', $subject))
-        ? $subject : die(json_encode(UserInput::MALICIOUS_USER_INPUT));
+        ? $subject : die(json_encode(UserInput::ERROR_PREFIX . UserInput::EMAIL));
     }
     
-    // en: Matches UTF8 letters, numbers
+    public static function Email_AllowEmpty($subject)
+    {
+        if (Trim($subject) === '') return '';
+        else
+        {
+            return UserInput::Email($subject);
+        }
+    }
+    
+    // en: Matches UTF8 letters, numbers, and STD allowed symbols for usernames
     public static function UserName($subject)
     {
         return (preg_match('/^(\p{L}|\p{N})[(\p{L}|\p{N}) _.-]+$/u', $subject))
-        ? $subject : die(json_encode(UserInput::MALICIOUS_USER_INPUT));
+        ? $subject : die(json_encode(UserInput::ERROR_PREFFIX . UserInput::STD_USERNAME));
+    }
+    
+    public static function UserName_AllowEmpty($subject)
+    {
+        if (Trim($subject) === '') return '';
+        else
+        {
+            return UserInput::UserName($subject);
+        }
     }
     
     public static function PhoneNumber($subject)
     {
         return (preg_match('/^[\+0-9\-\(\)\s]*$/', $subject))
-        ? $subject : die(json_encode(UserInput::MALICIOUS_USER_INPUT));
+        ? $subject : die(json_encode(UserInput::ERROR_PREFFIX . UserInput::PHONE_NUMBER));
+    }
+    
+    public static function PhoneNumber_AllowEmpty($subject)
+    {
+        if (Trim($subject) === '') return '';
+        else
+        {
+            return UserInput::PhoneNumber($subject);
+        }
     }
     
     public static function CreditCard($subject)
     {
         $instance = new UserInput();
-        return ($instance->luhn_check($subject)) ? $subject : die(json_encode(UserInput::MALICIOUS_USER_INPUT));
+        return ($instance->luhn_check($subject))
+        ? $subject : die(json_encode(UserInput::ERROR_PREFFIX . UserInput::CREDIT_CARD));
     }
     
     

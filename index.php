@@ -20,10 +20,6 @@ session_start();
 // lv: Pievienojam konfigurāciju
 $config = (include 'core/Site.php');
 
-// en: Initializing DB connection. Single connection is used for all database queries during single request.
-// After request the connection gets closed.
-// lv: Inicializējam DB pieslēgumu. Viena servera pieprasījuma laikā tiek lietots tikai viens pieslēgums
-// visiem DB queries. Pēc pieprasījuma pieslēgums tiek slēgts.
 $connection = new controller();
 $connection->start();
 
@@ -40,16 +36,12 @@ $post = $_POST;
         include "{$module_url}{$module}/{$module}.php";
         $load = new $module($get, $post, $connection->db());
         
-        // en: Checking user rights to access this module
-        // lv: Pārbaudām lietotāja tiesības piekļūt šim modulim
         if ($load->AccessLevel() > UserManager::GetUserAccessLevel())
         {
             $module_url = Site::module_url();
             include "{$module_url}Home/Home.php";
             $load = new Home(NULL, NULL, $connection->db());
             
-            // en: Default module should always have default access level
-            // lv: Noklusējuma modulim vienmēr vajadzētu būt ar noklusējuma piekļuves tiesībām
             if ($load->AccessLevel() > UserManager::GetUserAccessLevel())
             {
                 echo "<html><head><title>ERROR</title></head><body><h1>You do not have rights to view this page</h1></body></html>";

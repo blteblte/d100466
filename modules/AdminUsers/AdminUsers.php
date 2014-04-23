@@ -90,11 +90,13 @@ class AdminUsers {
            {
                $id = $query['id'];
                $User = UserContext::getUser($this->db(), $id);
-               $User->username = $query['username'];
-               $User->email = $query['email'];
-               $User->nickname = $query['nickname'];
-               $User->fname = $query['fname'];
-               $User->lname = $query['lname'];
+               
+               $User->email     = UserInput::Email($query['email']);
+               $User->fname     = UserInput::LettersName_AllowEmpty($query['fname']);
+               $User->lname     = UserInput::LettersName_AllowEmpty($query['lname']);
+               $User->username  = $query['username'];
+               $User->nickname  = $query['nickname'];
+               
                $result = $User->Update();
            }
        }
