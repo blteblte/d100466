@@ -32,7 +32,7 @@ $(function(){
     });
     
     if (___user_is_registered){
-        $('.user-info .user').text('Sveicināts ' + __username + ' | ').fadeIn(300);
+        $('.user-info .user').fadeIn(300);
         $('.reg-open-btn, .login-open-btn').hide(0, function(){
             $('.logout-btn').fadeIn(300);
         });
@@ -86,7 +86,7 @@ $(function(){
                     success: function(response) {
                         if (response.success == 1) {
                             $('.registration-popup').slideUp(400, function(){
-                                $('.user-info .user').text('Sveicināts ' + response.username + ' | ').fadeIn(300);
+                                $('.user-info .user').text(response.username + ' | ').fadeIn(300);
                                 $('.reg-open-btn, .login-open-btn').hide(0, function(){
                                     $('.logout-btn').fadeIn(300);
                                 });
@@ -142,7 +142,7 @@ $(function(){
                     success: function(response) {
                         if (response == 1) {
                             $('.registration-popup').slideUp(400, function(){
-                                $('.user-info .user').text('Sveicināts ' + $('.registration-popup form fieldset #reg-uname').val()) + ' | '.fadeIn(300);
+                                $('.user-info .user').text($('.registration-popup form fieldset #reg-uname').val()) + ' | '.fadeIn(300);
                                 $('.reg-open-btn, .login-open-btn').hide(0, function(){
                                     $('.logout-btn').fadeIn(300);
                                 });

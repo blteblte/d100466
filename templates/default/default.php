@@ -40,7 +40,7 @@
                 <div class="logo"><img src="<?=Site::css_url()?>default/images/dummy-logo.png" alt="dummy logo" /></div>
                 <div class="corner"></div>
                 <section class="user-info">
-                    <span class="user" style="display:none;"><?=UserManager::ActiveUserName()?></span>
+                    <span class="user" style="display:none;"><?=UserManager::ActiveUserName()?> | </span>
                     <span><a class="nav-list logout-btn" style="display:none;">IZIET</a></span>
                     <span><a class="nav-list login-open-btn">PIESLĒGTIES</a></span>
                     <span><a class="nav-list reg-open-btn">REĢISTRĒTIES</a></span>
@@ -58,9 +58,6 @@
                         </li>
                         <li><a class="nav-list">DROŠĪBA</a></li>
                         <li><a class="nav-list">PIEMĒRI</a></li>
-                        <li><a class="nav-list">LIETOŠANAS NOTEIKUMI</a></li>
-                        <li><a class="nav-list">PAR AUTORU</a></li>
-                        
                     </ul>
                 </nav>
             </header>
