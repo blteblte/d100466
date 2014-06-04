@@ -169,6 +169,38 @@ class ' . $module . ' {
         }
         die(json_encode($result));
     }
+    
+    public function async__GetViewFileContent($query, $data) {
+        $result = '';
+        $url = '';
+        if (UserManager::GetUserAccessLevel() >= AccessLevels::DEVELOPER_ACCESS_LEVEL)
+        {
+            if (isset($query['M']))
+            {
+                $url = Site::module_url() . $query['M'] . '/view.php';
+                $result = file_get_contents($url);
+            }
+        }
+        
+        die(json_encode($result));
+    }
+    
+    public function async__SaveViewContent($query, $data) {
+        $result = 0;
+        if (UserManager::GetUserAccessLevel() >= AccessLevels::DEVELOPER_ACCESS_LEVEL)
+        {
+            if (isset($query['M']))
+            {
+                if (isset($query['C']))
+                {
+                    $this->CreateViewFile($query['M'], json_decode($query['C']), '.php');
+                    $result = 1;
+                }
+            }
+        }
+        die(json_encode($result));
+        //die(json_encode($query['C'])); 
+    }
 
 }
 

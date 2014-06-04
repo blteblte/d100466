@@ -5,6 +5,12 @@
     padding: 20px;
 }
 
+.mgmt-edit{
+    display: inline-block;
+    vertical-align: text-top;
+    width: 554px;
+}
+
 .mgmt-dir{
     display: block;
     width: 200px;
@@ -68,4 +74,24 @@
     background: rgba(255,255,255,0.3);
     vertical-align: middle;
     text-align: center;
+}
+
+.mgmt-edit textarea{
+    width: 522px;
+    height: 486px;
+    font-family: Consolas;
+    font-size: 11px;
+    white-space: pre-wrap;
+}
+
+.mgmt-view-submit{
+    display: block;
+    margin-top: 10px;
+    width: 200px;
+}
+
+.CodeMirror{
+    width: 550px !important;
+    height: 486px !important;
+    font-size: 11px;
 }

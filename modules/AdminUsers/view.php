@@ -2,9 +2,6 @@
 <link href="<?=Site::virtual_module() . get_class($this)?>/this.css" rel="stylesheet">
 
 <h4>Lietotāju administrācija</h4>
-<p>
-    Šis ir tikai piemērs!
-</p>
 <section class="users-table">
     <div class="row table-header">
         <span>Lietotājvārds</span>

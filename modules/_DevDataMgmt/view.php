@@ -20,7 +20,7 @@
                         <option value="TINYINT">TINYINT</option>
                         <option value="SMALLINT">SMALLINT</option>
                         <option value="MEDIUMINT">MEDIUMINT</option>
-                        <option value="INT">INT</option>
+                        <option value="INT" selected="selected">INT</option>
                         <option value="INTEGER">INTEGER</option>
                         <option value="BIGINT">BIGINT</option>
                         <option value="REAL">REAL</option>

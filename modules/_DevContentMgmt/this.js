@@ -1,4 +1,6 @@
 
+var Editor;
+
 Mgmt = {
     
     Button: $('.mgmt-new'),
@@ -9,6 +11,7 @@ Mgmt = {
     SubmitBtn: $('.mgmt-add'),
     Dir: $('.mgmt-dir'),
     Info: $('.mgmt-info'),
+    Active: '',
     
     InitControls: function(){
         this.Button.click(function(){
@@ -27,6 +30,12 @@ Mgmt = {
         this.Dir.click(function(){
             var html = 'Lai grieztos pie šī moduļa izsauc sekojošu funkciju klikšķa notikumā:<br/><br/>ajaxRequestCore(\'';
             Mgmt.Info.html(html + $(this).html() + '\');');
+            Mgmt.GetViewContent($(this).html());
+            Mgmt.Active = $(this).html();
+        });
+        
+        $('.mgmt-view-submit').click(function(){
+            Mgmt.SaveViewContent(Mgmt.Active);
         });
     },
     
@@ -72,6 +81,33 @@ Mgmt = {
         }, '_DevContentMgmt', 'AddNewModule' ,
         '&M=' + this.Input.val() +
         '&T=' + this.Title.val(), undefined);
+    },
+    
+    GetViewContent: function(val){
+        ajaxRequest(false, function(response){
+            //var txt = response.replace(/\r\n/gi, "<br>");
+            //$('#mgmt-view-edit').val(response);
+            removeCodeMirror();
+            Editor = initCodeMirror();
+            Editor.setValue(response);
+        }, '_DevContentMgmt', 'GetViewFileContent', '&M=' + val, undefined);
+    },
+    
+    SaveViewContent: function(val){
+        if (Editor != undefined){
+            
+            var code = "";
+            var count = Editor.lineCount(), i;
+            for (i = 0; i < count; i++) {
+              code += Editor.getLine(i);
+              if (i != count-1) code += "\r\n";
+            }
+            var jcode = JSON.stringify(code);
+            
+            ajaxRequest(false, function(response){
+                if (response == 1) {Mgmt.GetViewContent(val);}
+            }, '_DevContentMgmt', 'SaveViewContent', '&M=' + val + '&C=' + jcode, undefined);
+        }
     }
 };
 
@@ -81,5 +117,27 @@ $(function(){
     });}, 300);
     
     Mgmt.InitControls();
+    
+    initCodeMirror();
+      
 });
+
+function initCodeMirror()
+{
+    //var textarea = $('#mgmt-view-edit')[0];
+    var textarea = document.getElementById('mgmt-view-edit');
+    
+    var editor = CodeMirror.fromTextArea(textarea, {
+        mode: "htmlmixed",
+        lineNumbers: true,
+        lineWrapping: true,
+        matchBrackets: true
+    });
+    return editor;
+}
+
+function removeCodeMirror()
+{
+    $('.CodeMirror').remove();
+}
 
