@@ -32,7 +32,7 @@ return array(
     "js_url"        => "{$root}/js/",
     "template_url"  => "{$server}{$root}/templates/",
     "css_url"       => "{$root}/templates/",
-    "img_url"       => "{$root}/templates/img/",
+    "template_virtual"       => "{$root}/templates/",
     "data"          => "{$server}{$root}/data/",
     "virtual_module"=> "{$root}/modules/"
 );

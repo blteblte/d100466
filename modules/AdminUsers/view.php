@@ -1,11 +1,5 @@
-<?php //global string variables used in script ?>
-<script>
-    __home = '<?=Site::base_url()?>';
-</script>
 <script src="<?=Site::virtual_module() . get_class($this)?>/this.js"></script>
 <link href="<?=Site::virtual_module() . get_class($this)?>/this.css" rel="stylesheet">
-
-<?php //html ?>
 
 <h4>Lietotāju administrācija</h4>
 <p>
@@ -18,7 +12,8 @@
         <span>Alias</span>
         <span>Vārds</span>
         <span>Uzvārds</span>
-        <span>Reģistrācijas datums</span>
+        <span>Piekļuves ID</span>
+        <span>Reģistrējies</span>
     </div>
     <hr />
     <?=$this->RenderUsersTableRows()?>

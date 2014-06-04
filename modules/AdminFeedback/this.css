@@ -1,0 +1,40 @@
+
+.f-comment-section{
+    width: 80%;
+    padding: 10px;
+    background: rgb(0,180,255);
+    border-radius: 2px;
+    color: white;
+    margin-bottom: 6px;
+    -webkit-trasition: background 0.4s;
+    transition: background 0.4s;
+}
+
+.f-comment-section:hover{
+    background: #7db9e8;
+}
+
+.f-uname, .f-uid{
+    display: inline-block;
+    width: 180px;
+    margin-bottom: 10px;
+}
+
+.f-comment{
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    min-height: 18px;
+    display: block;
+    background: white;
+    color: black;
+    padding: 8px;
+    word-wrap: break-word;
+}
+
+.f-delete{
+    cursor: pointer;
+    position: relative;
+    top: -63px;
+    right: -590px;
+}

@@ -1,0 +1,71 @@
+
+.mgmt-left, .mgmt-right{
+    display: inline-block;
+    vertical-align: text-top;
+    padding: 20px;
+}
+
+.mgmt-dir{
+    display: block;
+    width: 200px;
+    margin-bottom: 5px;
+}
+
+.mgmt-new{
+    width: 300px;
+    height: 60px;
+}
+
+.mgmt-new{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.mgmt-new-controls{
+    display: none;
+    margin-top: 20px;
+    width: 300px;
+}
+
+.mgmt-new-controls fieldset{
+    height: 200px;
+}
+
+#mgmt-name, #mgmt-title{
+    width: 176px;
+}
+
+.mgmt-add{
+    width: 40px;
+    height: 40px;
+    font-size: 54px;
+    line-height: 0;
+    position: relative;
+    top: 13px;
+    right: -16px;
+    font-weight: bolder;
+}
+
+.mgmt-notification{
+    display: none;
+}
+
+.mgmt-notification ul{
+    padding-left: 12px;
+}
+
+.mgmt-error{
+    border: 1px solid #7a0505;
+    box-shadow: 0px 0px 10px #7a0505;
+}
+
+.mgmt-info{
+    width: 297px;
+    height: 110px;
+    border: 1px solid #7DB9E8;
+    border-radius: 2px;
+    margin-top: 25px;
+    background: rgba(255,255,255,0.3);
+    vertical-align: middle;
+    text-align: center;
+}

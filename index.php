@@ -33,20 +33,27 @@ $post = $_POST;
         $module = $_GET['module'];
         $module_url = Site::module_url();
 
-        include "{$module_url}{$module}/{$module}.php";
-        $load = new $module($get, $post, $connection->db());
-        
-        if ($load->AccessLevel() > UserManager::GetUserAccessLevel())
+        if (!@include "{$module_url}{$module}/{$module}.php")
         {
-            $module_url = Site::module_url();
-            include "{$module_url}Home/Home.php";
-            $load = new Home(NULL, NULL, $connection->db());
-            
+            include "{$module_url}PageNotFound/PageNotFound.php";
+            $load = new PageNotFound(NULL, NULL, $connection->db());
+        }
+        else
+        {
+            $load = new $module($get, $post, $connection->db());
+        
             if ($load->AccessLevel() > UserManager::GetUserAccessLevel())
             {
-                echo "<html><head><title>ERROR</title></head><body><h1>You do not have rights to view this page</h1></body></html>";
-                $connection->end();
-                return;
+                $module_url = Site::module_url();
+                include "{$module_url}Home/Home.php";
+                $load = new Home(NULL, NULL, $connection->db());
+
+                if ($load->AccessLevel() > UserManager::GetUserAccessLevel())
+                {
+                    echo "<html><head><title>ERROR</title></head><body><h1>You do not have rights to view this page</h1></body></html>";
+                    $connection->end();
+                    return;
+                }
             }
         }
      }

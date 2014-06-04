@@ -44,6 +44,7 @@ class AdminUsers {
                         . "<span>{$User->nickname}</span>"
                         . "<span>{$User->fname}</span>"
                         . "<span>{$User->lname}</span>"
+                        . "<span>{$User->user_type}</span>"
                         . "<span class=\"dt\">{$dt}</span>"
                      . "</div>"
                         . "<span class=\"option option_{$User->user_id}\" onclick=\"showEditPanel({$User->user_id})\">REDIĢĒT</span>"
@@ -55,11 +56,19 @@ class AdminUsers {
                         . "<span><input type=\"text\" value=\"{$User->nickname}\" id=\"nickname_{$User->user_id}\" /></span>"
                         . "<span><input type=\"text\" value=\"{$User->fname}\" id=\"fname_{$User->user_id}\" /></span>"
                         . "<span><input type=\"text\" value=\"{$User->lname}\" id=\"lname_{$User->user_id}\" /></span>"
+                        . "<span><select id=\"type_{$User->user_id}\">"
+                            . "<option value=\"" . AccessLevels::REGISTERED_ACCESS_LEVEL . "\">Registered</option>"
+                            . "<option value=\"" . AccessLevels::MODERATOR_ACCESS_LEVEL . "\">Moderator</option>"
+                            . "<option value=\"" . AccessLevels::ADMIN_ACCESS_LEVEL . "\">Administrator</option>"
+                            . "<option value=\"" . AccessLevels::DEVELOPER_ACCESS_LEVEL . "\">Developer</option>"
+                        . "</select></span>"
                         . "<span>{$dt}</span>"
                     . "</div>"
                         . "<span class=\"option edit_option_{$User->user_id}\" onclick=\"hideEditPanel({$User->user_id})\" style=\"display:none\">ATCELT</span>"
                         . "<span class=\"option edit_option_{$User->user_id}\" onclick=\"saveUserData({$User->user_id})\" style=\"display:none\">SAGLABĀT</span>"
                         . "<hr id=\"hr_{$User->user_id}\" class=\"hr-table\">";
+                        
+                        echo "<script>$(function(){ $('#type_{$User->user_id}').val('{$User->user_type}') });</script>";
         }
         return $html;
     }
@@ -91,13 +100,17 @@ class AdminUsers {
                $id = $query['id'];
                $User = UserContext::getUser($this->db(), $id);
                
-               $User->email     = UserInput::Email($query['email']);
-               $User->fname     = UserInput::LettersName_AllowEmpty($query['fname']);
-               $User->lname     = UserInput::LettersName_AllowEmpty($query['lname']);
-               $User->username  = $query['username'];
-               $User->nickname  = $query['nickname'];
-               
-               $result = $User->Update();
+               if (UserManager::GetUserAccessLevel() >= $User->user_type)
+               {
+                    $User->email     = UserInput::Email($query['email']);
+                    $User->fname     = UserInput::LettersName_AllowEmpty($query['fname']);
+                    $User->lname     = UserInput::LettersName_AllowEmpty($query['lname']);
+                    $User->user_type = intval($query['type']);
+                    $User->username  = $query['username'];
+                    $User->nickname  = $query['nickname'];
+
+                    $result = $User->Update();
+               }
            }
        }
        die(json_encode(array('status'=>'OK', 'data'=>$result)));

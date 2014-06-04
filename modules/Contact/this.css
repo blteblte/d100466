@@ -1,0 +1,53 @@
+.first{
+    margin-left: 10px;
+}
+
+.presentation-section{
+    margin-top: 30px;
+    text-align: center;
+}
+
+.tile{
+    padding: 20px 20px 20px 20px;
+    display: inline-block;
+    width: 40%;
+}
+
+.tile img{
+    border-radius: 4px;
+    width: 100%;
+    opacity: 0.7;
+}
+
+.cont-fieldset{
+    border: 1px solid #78aebe;
+    border-radius: 2px;
+    padding: 30px;
+    text-align: right;
+}
+
+.cont-textarea{
+    text-align: left;
+}
+
+.cont-button{
+    width: 200px;
+    text-align: center;
+}
+
+#output{
+    display: none;
+    font-weight: bold;
+    height: 10px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.txt-err{
+    color: #7a0505;
+}
+
+.error-field{
+    border: 1px solid #7a0505;
+    box-shadow: 0px 0px 10px #7a0505;
+}

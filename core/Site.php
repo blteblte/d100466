@@ -44,7 +44,7 @@ class Site
     public static function js_url()         {return site_get('js_url');}
     public static function template_url()   {return site_get('template_url');}
     public static function css_url()        {return site_get('css_url');}
-    public static function img_url()        {return site_get('img_url');}
+    public static function template_virtual()        {return site_get('template_virtual');}
     public static function data()           {return site_get('data');}
     public static function virtual_module() {return site_get('virtual_module');}
 }

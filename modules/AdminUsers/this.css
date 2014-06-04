@@ -21,7 +21,7 @@ section.users-table{
 
 .users-table .row span{
     display: inline-block;
-    width: 16%;
+    width: 13%;
     word-break: break-all;
     vertical-align: text-top;
 }

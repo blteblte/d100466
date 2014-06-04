@@ -1,5 +1,7 @@
 $(function(){
-    $('.page-content').fadeIn(300);
+    $('.page-content').fadeIn(300, function(){
+        $(this).parent().animate({width: "1200px", marginLeft: "-200px"});
+    });
 });
 
 function deleteUser(id){
@@ -30,7 +32,8 @@ function saveUserData(id){
     data[2] = $('#nickname_'+id).val();
     data[3] = $('#fname_'+id).val();
     data[4] = $('#lname_'+id).val();
-    data[5] = $('#user'+id+' .dt').html();
+    data[5] = $('#type_'+id).val();
+    data[6] = $('#user'+id+' .dt').html();
     
     ajaxRequest(true, function(response) {
         if (response.data == 1){
@@ -46,5 +49,6 @@ function saveUserData(id){
             + "&nickname="+data[2]
             + "&fname="+data[3]
             + "&lname="+data[4]
+            + "&type="+data[5]
     , undefined);
 }

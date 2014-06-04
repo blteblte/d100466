@@ -1,4 +1,4 @@
-function ajaxRequestCore (module){
+function ajaxRequestCore (module, contentPart){
         var thisurl = __home + "?module=" + module;
         var url = '';
         var DOM;
@@ -13,14 +13,23 @@ function ajaxRequestCore (module){
                          window.history.replaceState("page_" + title, title, url);
                          document.title = title;
                          
-                         var element = '.page-content';
+                         var element = '';
+                         if (contentPart != undefined && contentPart != ''){
+                             element = contentPart;
+                         }
+                         else{
+                             element = '.page-content';
+                         }
                          var $content = $(element);
                          
                         $content.hide(0, function(){
                             $content.html( DOM.find(element).html() );
+                            if (contentPart != undefined && contentPart != ''){
+                               $content.show(0); 
+                            }
                         });
-                        console.log(thisurl + " | " + url);
-                        if (thisurl != url) {$('.registration-popup.login').slideDown(400);}
+                        
+                        if (thisurl != url) {$('.login-open-btn').click();}
                      }
             });
     }

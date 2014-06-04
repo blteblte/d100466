@@ -2,17 +2,42 @@
 
 $(function(){
     $('.reg-close-btn').click(function(){
-        $('.registration-popup.registration').slideUp(400);
+        $('.reg-logo').fadeOut(200, function(){
+            $('.registration-popup.registration').slideUp(400); 
+        });
+        $('.reg-close-btn').fadeOut(200);
+        $('.logo').fadeIn(300);
     });
     $('.reg-open-btn').click(function(){
-        $('.registration-popup.registration').slideDown(400);
+        $('.registration-popup.registration').slideDown(400, function(){
+            $('.reg-logo').fadeIn(300);
+            $('.reg-close-btn').fadeIn(300);
+            $('#reg-uname').focus();
+        });
+        $('.logo').fadeOut(300);
     });
     
     $('.login-close-btn').click(function(){
-        $('.registration-popup.login').slideUp(400);
+        $('.reg-logo').fadeOut(200, function(){
+            $('.registration-popup.login').slideUp(400);
+        });
+        $('.login-close-btn').fadeOut(200);
+        $('.logo').fadeIn(300);
     });
     $('.login-open-btn').click(function(){
-        $('.registration-popup.login').slideDown(400);
+        $('.registration-popup.login').slideDown(400, function(){
+            $('.reg-logo').fadeIn(300);
+            $('.login-close-btn').fadeIn(300);
+            $('#login-uname').focus();
+        });
+        $('.logo').fadeOut(300);
+    });
+    
+    $(document).keydown(function(e){
+        if (e.which == 27){
+            $('.reg-close-btn').click();
+            $('.login-close-btn').click();
+        }
     });
     
     $('#reg-submit-btn').bind('click', function(){
@@ -63,6 +88,8 @@ $(function(){
                     $('.logout-btn').fadeOut(200, function(){
                         $('.reg-open-btn, .login-open-btn').fadeIn(300);
                     });
+                    
+                    ajaxRequestCore("Home", ".page-top-content");
                 }
             });
             
@@ -86,11 +113,13 @@ $(function(){
                     success: function(response) {
                         if (response.success == 1) {
                             $('.registration-popup').slideUp(400, function(){
+                                $('.logo').fadeIn(300);
                                 $('.user-info .user').text(response.username + ' | ').fadeIn(300);
                                 $('.reg-open-btn, .login-open-btn').hide(0, function(){
                                     $('.logout-btn').fadeIn(300);
                                 });
-                                ajaxRequestCore('Home', 'Mājas');
+                                
+                                ajaxRequestCore("Home", ".page-top-content");
                             });
                         }
                         else {
@@ -142,11 +171,13 @@ $(function(){
                     success: function(response) {
                         if (response == 1) {
                             $('.registration-popup').slideUp(400, function(){
+                                $('.logo').fadeIn(300);
                                 $('.user-info .user').text($('.registration-popup form fieldset #reg-uname').val()) + ' | '.fadeIn(300);
                                 $('.reg-open-btn, .login-open-btn').hide(0, function(){
                                     $('.logout-btn').fadeIn(300);
                                 });
-                                ajaxRequestCore('Home', 'Mājas');
+                                
+                                ajaxRequestCore("Home", ".page-top-content");
                             });
                         }
                         else {

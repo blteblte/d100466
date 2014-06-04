@@ -1,25 +1,38 @@
-
+.reg-logo{
+    display: none;
+    background: url(img/big-logo.png) no-repeat;
+    width: 670px;
+    height: 238px;
+    position: absolute;
+    top: 309px;
+    left: -53px;
+}
 
 .registration-popup{
-        width: 800px;
+        width: 1000px;
         height: 500px;
-        background: rgba(0, 0, 0,0.7);
+        background: rgba(0, 100, 161,0.9);
         color: white;
         position: absolute;
         top: -4px;
         padding-top: 30px;
-        left: auto;
+        left: 50%;
         z-index: 10;
+        margin-left: -500px;
         border-radius: 4px;
-        box-shadow: 0px 10px 10px rgba(0,0,0,0.6);
-    }
+        box-shadow: 0px 6px 14px black;
+}
     
     .registration-popup fieldset{
         position: absolute;
         right: 100px;
-        top: 215px;
+        top: 182px;
         text-align: right;
         border: none;
+    }
+    
+    .registration-popup fieldset.second{
+        top: 264px;
     }
     
     .registration-popup fieldset input, .registration-popup fieldset label{
@@ -33,12 +46,15 @@
     }
     
     .registration-popup .reg-close-btn, .registration-popup .login-close-btn{
+        display: none;
         cursor: pointer;
         position: absolute;
-        right: 10px;
-        top: 10px;
+        right: -22px;
+        top: 32px;
     }
     
     .registration-popup button{
         margin-top: 20px;
+        width: 176px;
+        height: 36px;
     }

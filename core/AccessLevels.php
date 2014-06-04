@@ -12,5 +12,6 @@ class AccessLevels
     const   DEFAULT_ACCESS_LEVEL            = 1,
             REGISTERED_ACCESS_LEVEL         = 2,
             MODERATOR_ACCESS_LEVEL          = 3,
-            ADMIN_ACCESS_LEVEL              = 4;
+            ADMIN_ACCESS_LEVEL              = 4,
+            DEVELOPER_ACCESS_LEVEL          = 100;
 }

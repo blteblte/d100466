@@ -1,11 +1,4 @@
-<?php //globālie mainīgie, kas tiek var tikt pielietoti JS skriptā ?>
-<script>
-    __home = '<?=Site::base_url()?>';
-</script>
 <script src="<?=Site::virtual_module() . get_class($this)?>/this.js"></script>
-
-<?php //tālāk HTML: ?>
-
     <!-- MODULE CONTENT -->
     <div class="tab-content">    
         <div id="tab2" class="tab-pane fade in">
