@@ -8,7 +8,7 @@
  * 
  * @author Mārtiņš Bitenieks
  * @licence http://www.opensource.org/licenses/mit-license.html MIT License
- * @version 0.9
+ * @version 0.9.1.
  * 
  */
 
