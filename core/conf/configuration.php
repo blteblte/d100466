@@ -15,11 +15,11 @@ $server = $_SERVER['DOCUMENT_ROOT'];
 
 // en: You can define subpath and phpAjax will see this as your site root
 // lv: Var definēt apakšceļu un phpAjax to uztvers kā saita saimniekmapi
-    $root = '/d100466';
+    //$root = '/d100466';
 
 // en: Use this in server configuration.
 // lv: Lietot šo servera konfigurācijai
-    //$root = '';
+    $root = '';
 
 
 // en: Call this using static functions defined in /core/Site.php
