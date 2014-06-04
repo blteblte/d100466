@@ -41,7 +41,7 @@
                     <a onclick="ajaxRequestCore('AdminPage')">Administratora Lapa</a> |
                     <a onclick="ajaxRequestCore('AdminUsers')">Lietotāju kontrole</a> |
                     <?php if (UserManager::GetUserAccessLevel() >= AccessLevels::DEVELOPER_ACCESS_LEVEL){ ?>
-                    <a onclick="ajaxRequestCore('_DevContentMgmt')">Satura daļu pārvalde</a> |
+                    <a onclick="ajaxRequestCore('_DevContentMgmt')">Moduļu pārvalde</a> |
                     <a onclick="ajaxRequestCore('_DevDataMgmt')">Datu abstrakcija</a>
                     <?php } ?>
                 </div>
